@@ -1,0 +1,26 @@
+.shop-menu-head{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 7px;
+}
+.shop-btn-add-area{
+    width:100%;
+}
+.shop-tovar-item h4{
+    margin-top:-5px;
+}
+.shop-tovar-item .actions{
+    margin-top:-7px;
+}
+
+.catalogModal h3{
+    font-size:18px;
+    float:left;
+    margin-top:-5px !important;
+}
+.catalogModal .close{
+    margin-top:-12px;
+}
+
+.catalogModal .modal-header{
+    height:50px;
+}
