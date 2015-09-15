@@ -1,8 +1,8 @@
 import {enums} from './../../../bl/module.js';
 angular
     .module('rad.shop')
-    .controller('shopController', ['$rootScope', '$scope', '$state',
-    function($rootScope, $scope, $state) {
+    .controller('shopController', ['$rootScope', '$scope', '$state', 'bus',
+    function($rootScope, $scope, $state, bus) {
         $scope.currentTab = 'catalog';
         $scope.catalogPages = {
             publish: 'publish',
@@ -12,14 +12,14 @@ angular
             $scope.currentTab = tabName;
         };
 
-        $scope.popup = {
-            type: ''
-        };
-
         /*Диалоговые окна*/
-        $scope.addItem = function(){
-            //Открытие попапа добавленния нового товара
+        $scope.popup = {
+            type: false,
+            isOpen: false
+        };
+        $scope.popupAddItem = function(){//Открытие попапа добавленния нового товара
             $scope.popup.type = enums.POPUPS.ADD;
+            $scope.popup.isOpen = true;
         };
 
         $rootScope.page.sectionTitle = 'Магазин';

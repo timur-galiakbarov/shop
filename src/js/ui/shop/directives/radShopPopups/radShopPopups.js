@@ -4,34 +4,33 @@ angular
     .module('rad.shop')
     .directive('radShopPopups', radShopPopups);
 
-function radShopPopups() {
+radShopPopups.$inject = ['$templateCache'];
+
+function radShopPopups($templateCache) {
     return {
         restrict: 'EA',
         templateUrl: './templates/js/ui/shop/directives/radShopPopups/radShopPopups.html',
-        controller: ['$scope', '$state', function ($scope, $state) {
-
-        }],
+        controller: radShopPopupsController,
+        link: link,
         scope: {
-            type: '='
-        },
-        link: link
+            popup: '='
+        }
     };
 }
 
-function link($scope, $attrs) {
+
+radShopPopupsController.$inject = ['$scope'];
+function radShopPopupsController($scope){
     $scope.viewType = '';
+    var popupType = $scope.popup.type;
 
     $scope.closePopup = function(){
-        $scope.viewType = '';
-        $scope.type = '';
+        $scope.viewType = false;
     };
 
-    $scope.$watch('type', function(data){
-        if (data == enums.POPUPS.ADD){
-            $scope.viewType = 'Add';
-        }
-        if (data == ''){
-            $scope.viewType = '';
-        }
-    });
+
+}
+
+function link(scope, attrs) {
+
 }

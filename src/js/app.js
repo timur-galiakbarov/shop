@@ -1,4 +1,4 @@
-import {bus} from './bl/module.js';
+
 /*Инициализация приложения*/
 var app = angular.module('app', [
     'ngRoute',
@@ -10,10 +10,9 @@ var app = angular.module('app', [
     'rad.settings',
 ]);
 
-app.controller('appController', ['$rootScope', '$scope', '$state',
-    function ($rootScope, $scope, $state) {
+app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
+    function ($rootScope, $scope, $state, bus) {
 
-        console.log("12!!!");
         bus.subscribe('testEvent', function (e) {
             console.log(e.name);
         });

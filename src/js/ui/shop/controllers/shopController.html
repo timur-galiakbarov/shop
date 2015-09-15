@@ -25,13 +25,14 @@
     <div class="col-sm-4 col-md-4">
         <div class="block-flat">
             <div class="shop-btn-add-area">
-                <button type="button" class="btn btn-warning btn-rad btn-block" ng-click="addItem()"><i class="fa fa-plus-circle"></i> Добавить товар</button>
+                <button type="button" class="btn btn-warning btn-rad btn-block" ng-click="popupAddItem()"><i class="fa fa-plus-circle"></i> Добавить товар</button>
             </div>
         </div>
     </div>
 </div>
 
-<rad-shop-popups ng-if="popup.type" type="popup.type"></rad-shop-popups>
+<rad-shop-popups ng-if="popup.isOpen" popup="popup"></rad-shop-popups>
+
 
 
 
