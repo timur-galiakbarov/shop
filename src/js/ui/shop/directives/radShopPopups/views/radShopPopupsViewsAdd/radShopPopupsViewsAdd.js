@@ -12,22 +12,21 @@ function radShopPopupsViewsAdd($templateCache) {
         controller: controller,
         link: link,
         scope: {
-            openPopup: '='
+            openPopup: '=',
+            closePopup: '='
         }
     };
 }
 
 controller.$inject = ['$scope'];
-function controller ($scope){
-    function open(type){
-        if (type == enums.POPUPS.ADD) {
-            $("#modalAddItem").modal();//Jquery открытие модального окна
-            /*$('#modalAddItem').on('hide.bs.modal', function (e) {//Событие, вызываемое при закрытии окна
-                $scope.$parent.closePopup();
-            });*/
-        }
-    }
-    $scope.openPopup(open);
+function controller($scope) {
+
+    $("#modalAddItem").modal();//Jquery открытие модального окна
+    $('#modalAddItem').on('hidden.bs.modal', function (e) {//Событие, вызываемое при закрытии окна
+        console.log($scope.closePopup);
+        $scope.closePopup();
+    });
+
 }
 
 function link($scope) {

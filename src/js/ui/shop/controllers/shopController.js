@@ -4,6 +4,7 @@ angular
     .controller('shopController', ['$rootScope', '$scope', '$state', 'bus',
     function($rootScope, $scope, $state, bus) {
         $scope.currentTab = 'catalog';
+        $rootScope.page.sectionTitle = 'Магазин';
         $scope.catalogPages = {
             publish: 'publish',
             catalog: 'catalog'
@@ -17,10 +18,10 @@ angular
             type: false,
             isOpen: false
         };
-        $scope.popupAddItem = function(){//Открытие попапа добавленния нового товара
+        //Открытие попапа добавленния нового товара
+        $scope.popupAddItem = function(){
             $scope.popup.type = enums.POPUPS.ADD;
             $scope.popup.isOpen = true;
         };
 
-        $rootScope.page.sectionTitle = 'Магазин';
     }]);

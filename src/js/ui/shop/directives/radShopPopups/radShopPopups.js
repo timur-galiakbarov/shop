@@ -18,7 +18,6 @@ function radShopPopups($templateCache) {
     };
 }
 
-
 radShopPopupsController.$inject = ['$scope'];
 function radShopPopupsController($scope){
     $scope.viewType = '';
@@ -28,7 +27,10 @@ function radShopPopupsController($scope){
         $scope.viewType = false;
     };
 
-
+    $scope.close = function(){
+        console.log('close');
+        $scope.popup.isOpen = false;
+    }
 }
 
 function link(scope, attrs) {

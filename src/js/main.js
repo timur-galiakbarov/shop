@@ -1,14 +1,3 @@
-/*
- * Third party
- */
-
-
-/*
- * Custom
- */
-//= ./app.js
-//= ./route.js
-
 import modules from './ui/module.js';
 
 import dashboardController from './ui/dashboard/controllers/dashboardController.js';
