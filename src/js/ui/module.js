@@ -1,4 +1,3 @@
-angular.module('app', []);
 angular.module('rad.menu', []);
 angular.module('rad.shop', []);
 angular.module('rad.dashboard', []);
