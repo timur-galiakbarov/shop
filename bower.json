@@ -19,6 +19,8 @@
     "font-awesome": "~4.4.0",
     "jquery": "~2.1.4",
     "jquery-niftymodals": "niftymodals#*",
-    "postal.js": "postal#~1.0.7"
+    "lodash": "~3.10.1",
+    "postal.js": "postal#~1.0.7",
+    "postal.request-response": "~0.3.1"
   }
 }

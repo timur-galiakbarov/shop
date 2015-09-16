@@ -55,8 +55,8 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider',
             //Страница авторизации
             .state('login', {
                 url: '/login',
-                templateUrl: './templates/login/notAuth.html',
-            })
+                templateUrl: './templates/login/login.html',
+            });
 
         //$locationProvider.html5Mode(true);
     }]);

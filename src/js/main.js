@@ -1,3 +1,5 @@
+import accountLogic from './bl/account/accountLogic.js';
+
 import modules from './ui/module.js';
 
 import dashboardController from './ui/dashboard/controllers/dashboardController.js';
