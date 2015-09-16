@@ -10,10 +10,26 @@
             console.log($modal);
             $modal.open({
                 animation: true,
-                template: 'ddddddddddddddddddddddddddddddmyModalContent.html',
-                //controller: 'ModalInstanceCtrl',
+                templateUrl: './templates/js/ui/shop/services/shopPopupsFactory/views/addItemPopup.html',
+                controller: function($scope, $modalInstance){
+                    $scope.item = {
+                        name: '',
+                        cost: '',
+                        description: ''
+                    };
+                    $scope.add = function(){
+                        console.log($scope.item);
+
+                        //Закрываем попап
+                        $modalInstance.close();
+                    };
+                    $scope.close = function(){
+                        $modalInstance.close();
+                    };
+                },
             });
         };
+
 
         return {
             openAddItemPopup: openAddItemPopup
