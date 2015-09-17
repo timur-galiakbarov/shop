@@ -16,7 +16,10 @@
                 defer.resolve(result);
             },
             error: function(err){
-                defer.reject({error: "Произошла ошибка при обращении к "+options.url});
+                if (options.notLogError)
+                    defer.resolve({success:false});
+                else
+                    defer.reject({error: "Произошла ошибка при обращении к "+options.url});
             }
         });
         return defer.promise();

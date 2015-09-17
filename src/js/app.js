@@ -1,4 +1,5 @@
 import topics from './bl/topics.js';
+import events from './bl/events.js';
 
 /*Инициализация приложения*/
 var app = angular.module('app', [
@@ -15,11 +16,16 @@ var app = angular.module('app', [
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
         $rootScope.isAuth = false;
-        bus.request(topics.ACCOUNT.IS_AUTH).then((res)=>{
-            console.log(res);
-            if (res.success)
+        bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=>{
+            if (res.success) {
                 $rootScope.isAuth = true;
-            else $state.go('login');
+                bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=>{
+                    bus.publish(events.ACCOUNT.STATED, res);
+                });
+
+            } else {
+                location.href = '/login/';
+            }
         });
 
 

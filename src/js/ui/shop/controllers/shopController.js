@@ -1,4 +1,6 @@
 import {enums} from './../../../bl/module.js';
+import appState from './../../../bl/account/appState.js';
+
 angular
     .module('rad.shop')
     .controller('shopController', ['$rootScope', '$scope', '$state', 'bus', 'shopPopupsFactory',
@@ -12,6 +14,8 @@ angular
         $scope.viewTab = function(tabName){
             $scope.currentTab = tabName;
         };
+
+        console.log(appState.getCurrentShop());
 
         /*Диалоговые окна*/
         $scope.popupAddItem = function(){//Открытие попапа добавленния нового товара
