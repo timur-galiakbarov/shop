@@ -30,7 +30,7 @@ gulp.task('css:build', function () {
 });
 
 gulp.task('js:build', function () {
-    return browserify({entries: path.src.js}, {debug: false})
+    return browserify({entries: path.src.js, debug: true})
         .transform(babelify)
         .bundle()
         .pipe(source('bundle.js'))

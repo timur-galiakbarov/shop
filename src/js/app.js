@@ -1,3 +1,4 @@
+import topics from './bl/topics.js';
 
 /*Инициализация приложения*/
 var app = angular.module('app', [
@@ -13,12 +14,13 @@ var app = angular.module('app', [
 
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
-
-        bus.subscribe('testEvent', function (e) {
-            console.log(e.name);
+        $rootScope.isAuth = false;
+        bus.request(topics.ACCOUNT.IS_AUTH).then((res)=>{
+            console.log(res);
+            if (res.success)
+                $rootScope.isAuth = true;
+            else $state.go('login');
         });
-
-        bus.publish('testEvent', {name: 'Dr.Who'});
 
 
         $rootScope.page = {
