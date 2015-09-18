@@ -52,11 +52,6 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider',
                 },
                 parent: 'index'
             })
-            //Страница авторизации
-            .state('login', {
-                url: '/login',
-                templateUrl: './templates/login/login.html',
-            });
 
         //$locationProvider.html5Mode(true);
     }]);
