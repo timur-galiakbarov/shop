@@ -12,7 +12,7 @@ bus.subscribe(events.ACCOUNT.STATED, saveUserProfile);
 
 function saveUserProfile(user) {
     userInfo = user;
-    currentShopId = user.shopIds[0];
+    currentShopId = user.shopIds ? user.shopIds[0] : null;
 }
 
 var appState = {
@@ -24,6 +24,15 @@ var appState = {
     },
     getCurrentShop() {
         return currentShopId ? currentShopId : null;
+    },
+    getUserName() {
+        return userInfo ? userInfo.userName : null;
+    },
+    getLastName() {
+        return userInfo ? userInfo.userLastName : null;
+    },
+    getUserFullName() {
+        return userInfo ? userInfo.userFullName : null;
     }
 };
 

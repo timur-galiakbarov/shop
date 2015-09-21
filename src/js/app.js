@@ -13,20 +13,37 @@ var app = angular.module('app', [
     'ui.bootstrap'
 ]);
 
+angular.module('app').run(['$rootScope', 'bus',
+    function ($rootScope, bus) {
+        //$rootScope.isAuth = false;
+
+
+    }]);
+
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
-        $rootScope.isAuth = false;
+        bus.subscribe(events.ACCOUNT.STATED, function(res){
+            console.log(res);
+            $scope.isAuth = true;
+        });
         bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=>{
             if (res.success) {
-                $rootScope.isAuth = true;
                 bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=>{
                     bus.publish(events.ACCOUNT.STATED, res);
                 });
-
             } else {
+                $scope.isAuth = false;
                 location.href = '/login/';
             }
         });
+
+        bus.subscribe(events.ACCOUNT.LOGOUT, function(){
+            bus.request(topics.ACCOUNT.LOGOUT).then((res)=>{
+                location.href = '/login/';
+            });
+        });
+
+        //$scope.isAuth = true;
 
 
         $rootScope.page = {

@@ -7,5 +7,6 @@ export default {
     },
     ACCOUNT: {
         STATED: 'ACCOUNT.STATED',//Данные о пользователе получены
+        LOGOUT: 'ACCOUNT.LOGOUT',//Пользователь разлогинился
     }
 };
