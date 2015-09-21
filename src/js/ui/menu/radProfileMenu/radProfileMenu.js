@@ -25,7 +25,7 @@ function link($scope) {
         bus.publish(events.ACCOUNT.LOGOUT);
     };
 
-    appState.getUserFullName();
+    $scope.userFullName = appState.getUserFullName();
 
 
 }

@@ -6,13 +6,13 @@ import events from '../events.js';
 import topics from '../events.js';
 
 var userInfo = null;
-var currentShopId = null;
+var currentShop = null;
 
 bus.subscribe(events.ACCOUNT.STATED, saveUserProfile);
 
 function saveUserProfile(user) {
-    userInfo = user;
-    currentShopId = user.shopIds ? user.shopIds[0] : null;
+    userInfo = user.user ? user.user : null;
+    currentShop = user.shopIds ? user.shopIds[0] : null;
 }
 
 var appState = {
@@ -22,8 +22,11 @@ var appState = {
     getUserShopList() {
         return userInfo ? userInfo.shopIds : null;
     },
-    getCurrentShop() {
-        return currentShopId ? currentShopId : null;
+    getCurrentShopId() {
+        return currentShop.id ? currentShop.id : null;
+    },
+    getCurrentShopName() {
+        return currentShop.name ? currentShop.name : null;
     },
     getUserName() {
         return userInfo ? userInfo.userName : null;

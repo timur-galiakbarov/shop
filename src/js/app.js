@@ -15,16 +15,17 @@ var app = angular.module('app', [
 
 angular.module('app').run(['$rootScope', 'bus',
     function ($rootScope, bus) {
-        //$rootScope.isAuth = false;
-
 
     }]);
 
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
-        bus.subscribe(events.ACCOUNT.STATED, function(res){
-            console.log(res);
-            $scope.isAuth = true;
+        bus.subscribe(events.ACCOUNT.STATED, function(){
+            $rootScope.$apply(function () {
+                $rootScope.isAuth = true;
+            });
+            //Открываем раздел по умолчанию
+            $state.go('index.dashboard');
         });
         bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=>{
             if (res.success) {
@@ -43,13 +44,9 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
             });
         });
 
-        //$scope.isAuth = true;
-
-
         $rootScope.page = {
             sectionTitle: '',
             breadcrumb: []
         };
-        //Открываем раздел по умолчанию
-        $state.go('index.dashboard');
+
     }]);

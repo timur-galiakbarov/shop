@@ -5,6 +5,7 @@ export default {
         LOGOUT: 'ACCOUNT.LOGOUT_SYSTEM'
     },
     SHOP: {
-        GET_ITEMS: 'SHOP.GET_ITEMS'
+        GET_ITEMS: 'SHOP.GET_ITEMS',
+        ADD_ITEM: 'SHOP.ADD_ITEM',
     }
 };

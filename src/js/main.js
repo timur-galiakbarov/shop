@@ -1,4 +1,5 @@
 import accountLogic from './bl/account/accountLogic.js';
+import shopLogic from './bl/shop/shopLogic.js';
 
 import modules from './ui/module.js';
 

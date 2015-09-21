@@ -15,7 +15,7 @@ angular
             $scope.currentTab = tabName;
         };
 
-        console.log(appState.getCurrentShop());
+        //console.log(appState.getCurrentShop());
 
         /*Диалоговые окна*/
         $scope.popupAddItem = function(){//Открытие попапа добавленния нового товара
