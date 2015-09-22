@@ -31,6 +31,7 @@
     "gulp-uglify": "^1.4.0",
     "gulp-watch": "^4.3.5",
     "lodash": "^3.10.1",
+    "ng-sanitize": "0.0.2",
     "require-dir": "^0.3.0",
     "rigger": "git://github.com/buildjs/rigger",
     "rimraf": "^2.4.3",

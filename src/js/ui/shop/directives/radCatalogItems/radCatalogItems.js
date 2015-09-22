@@ -1,4 +1,6 @@
 import topics from './../../../../bl/topics.js';
+import events from './../../../../bl/events.js';
+import bus from './../../../../bl/core/busModule.js';
 
 angular
     .module('rad.shop')
@@ -12,8 +14,24 @@ function radCatalogItems() {
         restrict: 'EA',
         templateUrl: './templates/js/ui/shop/directives/radCatalogItems/radCatalogItems.html',
         controller: ['$scope', '$state', 'bus', function ($scope, $state, bus) {
-            bus.request(topics.SHOP.GET_ITEMS).then((res)=>{
-                console.log(res);
+            $scope.shop = {
+                items: []
+            };
+            bus.request(topics.SHOP.GET_ITEMS, {}).then((res)=>{
+                if (res&&res.data) {
+                    $scope.$apply(function () {
+                        $scope.shop.items = res.data;
+                    });
+                }
+            });
+
+            bus.subscribe(events.SHOP.ITEM_CREATED, function(res){
+                bus.request(topics.SHOP.GET_ITEM, {id: res.id}).then((res)=>{
+                    console.log(res);
+                    $scope.$apply(function () {
+                        $scope.shop.items.push(res.data);
+                    });
+                });
             });
         }],
         link: link

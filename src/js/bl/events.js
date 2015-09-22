@@ -8,5 +8,8 @@ export default {
     ACCOUNT: {
         STATED: 'ACCOUNT.STATED',//Данные о пользователе получены
         LOGOUT: 'ACCOUNT.LOGOUT',//Пользователь разлогинился
+    },
+    SHOP: {
+        ITEM_CREATED: 'SHOP.ITEM.CREATED',//Событие о созданном в БД товаре
     }
 };

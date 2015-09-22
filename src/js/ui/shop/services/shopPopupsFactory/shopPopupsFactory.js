@@ -1,4 +1,5 @@
 import topics from './../../../../bl/topics.js';
+import events from './../../../../bl/events.js';
 import appState from './../../../../bl/account/appState.js';
 
 (function (module, angular) {
@@ -23,8 +24,9 @@ import appState from './../../../../bl/account/appState.js';
                         currentShopId: appState.getCurrentShopId()
                     };
                     $scope.add = function(){
-                        //console.log($scope.item);
+
                         bus.request(topics.SHOP.ADD_ITEM, $scope.item).then((res)=>{
+                            bus.publish(events.SHOP.ITEM_CREATED, res);
                             console.log(res);
                         });
                         //Закрываем попап

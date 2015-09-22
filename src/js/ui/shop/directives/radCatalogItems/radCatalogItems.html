@@ -1,16 +1,17 @@
-
-<div class="block-flat col-sm-6 col-xs-12 shop-tovar-item">
-    <div class="header">
-        <div class="actions">
-            <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a>
-            <a class="refresh" href="#"><i class="fa fa-pencil"></i></a>
-            <a class="close-down" href="#"><i class="fa fa-times"></i></a>
+<div class="row">
+    <div class="col-lg-6 col-md-12 col-xs-12" ng-repeat="item in shop.items">
+        <div class="block-flat shop-tovar-item">
+            <div class="header">
+                <div class="actions">
+                    <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a>
+                    <a class="refresh" href="#"><i class="fa fa-pencil"></i></a>
+                    <a class="close-down" href="#"><i class="fa fa-times"></i></a>
+                </div>
+                <h4>{{item.name}}</h4>
+            </div>
+            <div class="content">
+                <p ng-bind-html="item.description"></p>
+            </div>
         </div>
-        <h4>Смартфон LG Optimus Black</h4>
-    </div>
-    <div class="content">
-        <p>Etiam mattis arcu non blandit blandit. Sed condimentum pellentesque venenatis. Donec in
-            egestas massa, ac dignissim sapien. Nullam placerat lobortis sapien, in tempor justo
-            imperdiet nec. Nulla ante est, faucibus id eleifend vitae, suscipit eu est.</p>
     </div>
 </div>

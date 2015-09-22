@@ -4,6 +4,7 @@ import events from './bl/events.js';
 /*Инициализация приложения*/
 var app = angular.module('app', [
     'ngRoute',
+    'ngSanitize',
     'ui.router',
     'rad.menu',
     'rad.shop',
