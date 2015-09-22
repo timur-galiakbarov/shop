@@ -10,5 +10,15 @@ export default {
         }).then((res)=> {
             return res;
         });
+    },
+    addItem(options){
+        console.log(options);
+        return serverApi.request({
+            url: '/controllers/shop/addItem.php',
+            type: 'POST',
+            data: options
+        }).then((res)=> {
+            return res;
+        });
     }
 }

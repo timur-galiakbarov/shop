@@ -13,26 +13,40 @@ var app = angular.module('app', [
     'ui.bootstrap'
 ]);
 
+angular.module('app').run(['$rootScope', 'bus',
+    function ($rootScope, bus) {
+
+    }]);
+
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
-        $rootScope.isAuth = false;
+        bus.subscribe(events.ACCOUNT.STATED, function(){
+            $rootScope.$apply(function () {
+                $rootScope.isAuth = true;
+            });
+            //Открываем раздел по умолчанию
+            $state.go('index.dashboard');
+        });
         bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=>{
             if (res.success) {
-                $rootScope.isAuth = true;
                 bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=>{
                     bus.publish(events.ACCOUNT.STATED, res);
                 });
-
             } else {
+                $scope.isAuth = false;
                 location.href = '/login/';
             }
         });
 
+        bus.subscribe(events.ACCOUNT.LOGOUT, function(){
+            bus.request(topics.ACCOUNT.LOGOUT).then((res)=>{
+                location.href = '/login/';
+            });
+        });
 
         $rootScope.page = {
             sectionTitle: '',
             breadcrumb: []
         };
-        //Открываем раздел по умолчанию
-        $state.go('index.dashboard');
+
     }]);

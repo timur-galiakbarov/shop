@@ -1,4 +1,5 @@
 import accountLogic from './bl/account/accountLogic.js';
+import shopLogic from './bl/shop/shopLogic.js';
 
 import modules from './ui/module.js';
 
@@ -21,7 +22,6 @@ import settingsController from './ui/settings/controllers/settingsController.js'
 import radMenu from './ui/menu/module.js';
 
 import app from './app.js';
-import signInController from './ui/sign/signInController.js';
 
 import route from './route.js';
 import bus from './bl/core/bus.js';
