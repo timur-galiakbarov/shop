@@ -39,9 +39,39 @@ import appState from './../../../../bl/account/appState.js';
             });
         };
 
+        var openRemoveItemPopup = function () {
+            $modal.open({
+                animation: true,
+                templateUrl: './templates/js/ui/shop/services/shopPopupsFactory/views/removeItemPopup.html',
+                controller: function($scope, $modalInstance){
+                    $scope.item = {
+                        name: '',
+                        cost: '',
+                        description: '',
+                        userId: appState.getUserId(),
+                        currentShopId: appState.getCurrentShopId(),
+                        id: ''
+                    };
+                    $scope.remove = function(){
+
+                        bus.request(topics.SHOP.REMOVE_ITEM, $scope.item).then((res)=>{
+                            bus.publish(events.SHOP.ITEM_REMOVED, res);
+                            console.log(res);
+                        });
+                        //Закрываем попап
+                        $modalInstance.close();
+                    };
+                    $scope.close = function(){
+                        $modalInstance.close();
+                    };
+                },
+            });
+        };
+
 
         return {
-            openAddItemPopup: openAddItemPopup
+            openAddItemPopup: openAddItemPopup,
+            openRemoveItemPopup: openRemoveItemPopup
         }
 
     }

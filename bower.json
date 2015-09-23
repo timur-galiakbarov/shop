@@ -18,9 +18,11 @@
     "angular-ui-router": "~0.2.13",
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
+    "jPushMenu": "~1.1.1",
     "jquery": "~2.1.4",
     "jquery-niftymodals": "niftymodals#*",
     "lodash": "~3.10.1",
+    "nanoscroller": "~0.8.7",
     "postal.js": "postal#~1.0.7",
     "postal.request-response": "~0.3.1"
   }

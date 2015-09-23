@@ -21,16 +21,16 @@ angular.module('app').run(['$rootScope', 'bus',
 
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
-        bus.subscribe(events.ACCOUNT.STATED, function(){
+        bus.subscribe(events.ACCOUNT.STATED, function () {
             $rootScope.$apply(function () {
                 $rootScope.isAuth = true;
             });
             //Открываем раздел по умолчанию
             $state.go('index.dashboard');
         });
-        bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=>{
+        bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=> {
             if (res.success) {
-                bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=>{
+                bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=> {
                     bus.publish(events.ACCOUNT.STATED, res);
                 });
             } else {
@@ -39,8 +39,8 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
             }
         });
 
-        bus.subscribe(events.ACCOUNT.LOGOUT, function(){
-            bus.request(topics.ACCOUNT.LOGOUT).then((res)=>{
+        bus.subscribe(events.ACCOUNT.LOGOUT, function () {
+            bus.request(topics.ACCOUNT.LOGOUT).then((res)=> {
                 location.href = '/login/';
             });
         });
@@ -49,5 +49,12 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
             sectionTitle: '',
             breadcrumb: []
         };
+
+        $scope.toggleMenu = function (e) {
+            var ul = $(".cl-vnavigation");
+            ul.slideToggle(300, 'swing', function () {
+            });
+            e.preventDefault();
+        }
 
     }]);

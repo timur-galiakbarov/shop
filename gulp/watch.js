@@ -13,4 +13,7 @@ gulp.task('watch', function () {
     watch([path.watch.js], function (event, cb) {
         gulp.start('js:build');
     });
+    watch([path.watch.tpljs], function (event, cb) {
+        gulp.start('js:tplbuild');
+    });
 });

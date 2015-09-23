@@ -38,6 +38,12 @@ gulp.task('js:build', function () {
         .pipe(gulp.dest(path.build.js)); //Выплюнем готовый файл в build
 });
 
+gulp.task('js:tplbuild', function () {
+    return gulp.src(path.src.tpljs) //Выберем файлы по нужному пути
+        .pipe(gulp.dest(path.build.tpljs)) //Выплюнем их в папку build
+        .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+});
+
 gulp.task('fonts:build', function () {
     gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.build.fonts))
@@ -48,6 +54,7 @@ gulp.task('build', ['bower_components'], function (done) {
         'indexHtml:build',
         'html:build',
         'css:build',
+        'js:tplbuild',
         'js:build',
         'fonts:build',done);
 });

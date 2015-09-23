@@ -13,7 +13,7 @@ function radCatalogItems() {
     return {
         restrict: 'EA',
         templateUrl: './templates/js/ui/shop/directives/radCatalogItems/radCatalogItems.html',
-        controller: ['$scope', '$state', 'bus', function ($scope, $state, bus) {
+        controller: ['$scope', '$state', 'bus', 'shopPopupsFactory', function ($scope, $state, bus, shopPopupsFactory) {
             $scope.shop = {
                 items: []
             };
@@ -27,12 +27,18 @@ function radCatalogItems() {
 
             bus.subscribe(events.SHOP.ITEM_CREATED, function(res){
                 bus.request(topics.SHOP.GET_ITEM, {id: res.id}).then((res)=>{
-                    console.log(res);
+                    //console.log(res);
                     $scope.$apply(function () {
                         $scope.shop.items.push(res.data);
                     });
                 });
             });
+
+            $scope.removeItem = function(id){
+                //TODO ѕо id надо вытащить весь товар и передать в openRemoveItemPopup
+
+                shopPopupsFactory.openRemoveItemPopup(id);
+            }
         }],
         link: link
     };

@@ -11,5 +11,6 @@ export default {
     },
     SHOP: {
         ITEM_CREATED: 'SHOP.ITEM.CREATED',//Событие о созданном в БД товаре
+        ITEM_REMOVED: 'SHOP.ITEM.REMOVED',//Событие о удаленном в БД товаре
     }
 };
