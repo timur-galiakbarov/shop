@@ -21,9 +21,18 @@ export default {
         });
     },
     getItem(options){
-        console.log(options);
+        //console.log(options);
         return serverApi.request({
             url: '/controllers/shop/getItem.php',
+            type: 'POST',
+            data: options
+        }).then((res)=> {
+            return res;
+        });
+    },
+    removeItem(options){
+        return serverApi.request({
+            url: '/controllers/shop/removeItem.php',
             type: 'POST',
             data: options
         }).then((res)=> {

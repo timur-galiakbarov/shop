@@ -34,10 +34,18 @@ function radCatalogItems() {
                 });
             });
 
-            $scope.removeItem = function(id){
-                //TODO ѕо id надо вытащить весь товар и передать в openRemoveItemPopup
+            bus.subscribe(events.SHOP.ITEM_REMOVED, function(res){
+                var index = _.findIndex($scope.shop.items, function(val){
+                    return val.id == res.removeId;
+                });
+                $scope.$apply(function () {
+                    $scope.shop.items.splice(index, 1);
+                });
+            });
 
-                shopPopupsFactory.openRemoveItemPopup(id);
+            $scope.removeItem = function(id){
+                var item = $scope.shop.items.filter((val)=>{ return val.id == id });
+                shopPopupsFactory.openRemoveItemPopup(item[0]);
             }
         }],
         link: link

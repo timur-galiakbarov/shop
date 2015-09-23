@@ -27,7 +27,7 @@ import appState from './../../../../bl/account/appState.js';
 
                         bus.request(topics.SHOP.ADD_ITEM, $scope.item).then((res)=>{
                             bus.publish(events.SHOP.ITEM_CREATED, res);
-                            console.log(res);
+                            //console.log(res);
                         });
                         //Закрываем попап
                         $modalInstance.close();
@@ -39,25 +39,25 @@ import appState from './../../../../bl/account/appState.js';
             });
         };
 
-        var openRemoveItemPopup = function () {
+        var openRemoveItemPopup = function (options) {
             $modal.open({
                 animation: true,
                 templateUrl: './templates/js/ui/shop/services/shopPopupsFactory/views/removeItemPopup.html',
                 controller: function($scope, $modalInstance){
                     $scope.item = {
-                        name: '',
-                        cost: '',
-                        description: '',
+                        name: options.name,
                         userId: appState.getUserId(),
                         currentShopId: appState.getCurrentShopId(),
-                        id: ''
+                        id: options.id
                     };
-                    $scope.remove = function(){
 
-                        bus.request(topics.SHOP.REMOVE_ITEM, $scope.item).then((res)=>{
-                            bus.publish(events.SHOP.ITEM_REMOVED, res);
-                            console.log(res);
-                        });
+                    $scope.remove = function() {
+                        if ($scope.item.id){
+                            bus.request(topics.SHOP.REMOVE_ITEM, $scope.item).then((res)=> {
+                                bus.publish(events.SHOP.ITEM_REMOVED, res);
+                                //console.log(res);
+                            });
+                        }
                         //Закрываем попап
                         $modalInstance.close();
                     };

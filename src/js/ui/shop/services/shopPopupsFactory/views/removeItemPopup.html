@@ -3,12 +3,14 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Удаление товара</h3>
+                <h3>Удаление товара №{{item.id}}</h3>
                 <button type="button" class="close md-close" aria-hidden="true" ng-click="close()">&times;</button>
             </div>
             <div class="modal-body form">
                 <div class="form-group">
-                    <label>Подтвердите удаление товара</label>
+                    <label>Подтвердите удаление товара:</label>
+                    <br>
+                    <span>{{item.id}} {{item.name}}</span>
                 </div>
 
             </div>
