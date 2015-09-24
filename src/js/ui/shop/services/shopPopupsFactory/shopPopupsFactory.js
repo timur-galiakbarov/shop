@@ -17,7 +17,7 @@ import appState from './../../../../bl/account/appState.js';
                 templateUrl: './templates/js/ui/shop/services/shopPopupsFactory/views/addItemPopup.html',
                 controller: function($scope, $modalInstance, FileUploader){
                     var uploader = $scope.uploader = new FileUploader({
-                        url: 'upload.php'
+                        url: '/controllers/shop/uploadImages.php'
                     });
 
                     // FILTERS
@@ -64,7 +64,7 @@ import appState from './../../../../bl/account/appState.js';
                         console.info('onCompleteItem', fileItem, response, status, headers);
                     };
                     uploader.onCompleteAll = function() {
-                        console.info('onCompleteAll');
+                        sendData();
                     };
 
                     console.info('uploader', uploader);
@@ -78,14 +78,21 @@ import appState from './../../../../bl/account/appState.js';
                         userId: appState.getUserId(),
                         currentShopId: appState.getCurrentShopId()
                     };
-                    $scope.add = function(){
+                    $scope.isLoadImages = false;
 
+                    $scope.add = function(){
+                        if (uploader.queue.length>0){
+                            $scope.isLoadImages = true;
+                            uploader.uploadAll();
+                        } else {
+                            sendData();
+                        }
+                    };
+                    var sendData = function(){
                         bus.request(topics.SHOP.ADD_ITEM, $scope.item).then((res)=>{
                             bus.publish(events.SHOP.ITEM_CREATED, res);
-                            //console.log(res);
-                        });
-                        //Закрываем попап
-                        $modalInstance.close();
+                            $modalInstance.close();
+                        })
                     };
                     $scope.close = function(){
                         $modalInstance.close();
