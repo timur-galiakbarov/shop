@@ -11,7 +11,7 @@
 .shop-tovar-item .actions{
     margin-top:-7px;
 }
-
+/*------------------*/
 .catalogModal h3{
     font-size:18px;
     float:left;
@@ -24,6 +24,25 @@
 .catalogModal .modal-header{
     height:50px;
 }
+.catalogModal .itemImage{
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: 100px;
+    padding-top:10px;
+    position: relative;
+}
+.catalogModal .imageRemove{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 26px;
+    height:26px;
+    border-radius: 13px;
+}
+.catalogModal .uploadImageBtn{
+
+}
+/*------------------*/
 
 .radDropTable th{
     border:0px;
@@ -35,6 +54,7 @@
 }
 
 .radDropTable td, .radDropTable th{
+    border:0px;
     border-top: 1px solid #eee;
     border-left: 1px solid #eee;
 }
