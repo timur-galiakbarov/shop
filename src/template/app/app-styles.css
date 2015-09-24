@@ -24,3 +24,17 @@
 .catalogModal .modal-header{
     height:50px;
 }
+
+.radDropTable th{
+    border:0px;
+}
+
+.radDropTable{
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.radDropTable td, .radDropTable th{
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+}

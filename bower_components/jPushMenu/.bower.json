@@ -10,9 +10,5 @@
   },
   "_source": "git://github.com/takien/jPushMenu.git",
   "_target": "~1.1.1",
-  "_originalSource": "jPushMenu",
-  "main": [
-    "js/jPushMenu.js",
-    "css/jPushMenu.css"
-  ]
+  "_originalSource": "jPushMenu"
 }
