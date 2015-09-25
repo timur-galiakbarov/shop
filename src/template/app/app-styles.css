@@ -30,6 +30,8 @@
     height: 100px;
     padding-top:10px;
     position: relative;
+    text-align: center;
+    line-height: 80px;
 }
 .catalogModal .imageRemove{
     position: absolute;
