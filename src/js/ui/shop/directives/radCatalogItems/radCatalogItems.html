@@ -5,11 +5,25 @@
                 <div class="actions">
                     <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a>
                     <a class="refresh" href="#"><i class="fa fa-pencil"></i></a>
-                    <a class="close-down" ng-click="removeItem(item.id)" style="cursor:pointer;"><i class="fa fa-times"></i></a>
+                    <a class="close-down" ng-click="removeItem(item.id)" style="cursor:pointer;"><i
+                            class="fa fa-times"></i></a>
                 </div>
                 <h4>{{item.name}}</h4>
             </div>
             <div class="content">
+                <div class="itemImage" ng-if="item.images&&item.images.length>0">
+                    <img src="{{item.images[0]}}">
+                </div>
+                <div class="itemImages row">
+                    <div ng-repeat="imageUrl in item.images">
+                        <div class="col-xs-3 col-sm-3">
+                            <div class="smallImage">
+                                <img src="{{imageUrl}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="itemCost">{{item.cost}}</p>
                 <p ng-bind-html="item.description"></p>
             </div>
         </div>

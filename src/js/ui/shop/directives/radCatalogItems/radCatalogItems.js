@@ -17,16 +17,17 @@ function radCatalogItems() {
             $scope.shop = {
                 items: []
             };
-            bus.request(topics.SHOP.GET_ITEMS, {}).then((res)=>{
-                if (res&&res.data) {
+            bus.request(topics.SHOP.GET_ITEMS, {}).then((res)=> {
+                if (res && res.data) {
                     $scope.$apply(function () {
+                        //console.log(res.data);
                         $scope.shop.items = res.data;
                     });
                 }
             });
 
-            bus.subscribe(events.SHOP.ITEM_CREATED, function(res){
-                bus.request(topics.SHOP.GET_ITEM, {id: res.id}).then((res)=>{
+            bus.subscribe(events.SHOP.ITEM_CREATED, function (res) {
+                bus.request(topics.SHOP.GET_ITEM, {id: res.id}).then((res)=> {
                     //console.log(res);
                     $scope.$apply(function () {
                         $scope.shop.items.push(res.data);
@@ -34,8 +35,8 @@ function radCatalogItems() {
                 });
             });
 
-            bus.subscribe(events.SHOP.ITEM_REMOVED, function(res){
-                var index = _.findIndex($scope.shop.items, function(val){
+            bus.subscribe(events.SHOP.ITEM_REMOVED, function (res) {
+                var index = _.findIndex($scope.shop.items, function (val) {
                     return val.id == res.removeId;
                 });
                 $scope.$apply(function () {
@@ -43,8 +44,10 @@ function radCatalogItems() {
                 });
             });
 
-            $scope.removeItem = function(id){
-                var item = $scope.shop.items.filter((val)=>{ return val.id == id });
+            $scope.removeItem = function (id) {
+                var item = $scope.shop.items.filter((val)=> {
+                    return val.id == id
+                });
                 shopPopupsFactory.openRemoveItemPopup(item[0]);
             }
         }],

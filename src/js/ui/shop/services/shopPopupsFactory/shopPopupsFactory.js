@@ -33,42 +33,42 @@ import appState from './../../../../bl/account/appState.js';
                     // CALLBACKS
 
                     uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
-                        console.info('onWhenAddingFileFailed', item, filter, options);
-                    };
-                    uploader.onAfterAddingFile = function(fileItem) {
-                        console.info('onAfterAddingFile', fileItem);
-                    };
-                    uploader.onAfterAddingAll = function(addedFileItems) {
-                        console.info('onAfterAddingAll', addedFileItems);
-                        $scope.$apply();
+                        //console.info('onWhenAddingFileFailed', item, filter, options);
                     };
                     uploader.onBeforeUploadItem = function(item) {
-                        console.info('onBeforeUploadItem', item);
+                        //console.info('onBeforeUploadItem', item);
                     };
                     uploader.onProgressItem = function(fileItem, progress) {
-                        console.info('onProgressItem', fileItem, progress);
+                        //console.info('onProgressItem', fileItem, progress);
                     };
                     uploader.onProgressAll = function(progress) {
-                        console.info('onProgressAll', progress);
+                        //console.info('onProgressAll', progress);
                     };
                     uploader.onSuccessItem = function(fileItem, response, status, headers) {
-                        console.info('onSuccessItem', fileItem, response, status, headers);
+                        //console.info('onSuccessItem', fileItem, response, status, headers);
                     };
                     uploader.onErrorItem = function(fileItem, response, status, headers) {
-                        console.info('onErrorItem', fileItem, response, status, headers);
+                        //console.info('onErrorItem', fileItem, response, status, headers);
                     };
                     uploader.onCancelItem = function(fileItem, response, status, headers) {
                         console.info('onCancelItem', fileItem, response, status, headers);
                     };
                     uploader.onCompleteItem = function(fileItem, response, status, headers) {
-                        console.info('onCompleteItem', fileItem, response, status, headers);
+                        //console.info('onCompleteItem', fileItem, response, status, headers);
+                    };
+                    //console.info('uploader', uploader);
+
+                    var path = '/upload/temp/'+appState.getUserId()+'/';
+                    var imagesArr = [];
+                    uploader.onAfterAddingFile = function(fileItem) {
+
+                    };
+                    uploader.onAfterAddingAll = function(addedFileItems) {
+
                     };
                     uploader.onCompleteAll = function() {
                         sendData();
                     };
-
-                    console.info('uploader', uploader);
-
 
                     $scope.item = {
                         name: '',
@@ -82,12 +82,17 @@ import appState from './../../../../bl/account/appState.js';
 
                     $scope.add = function(){
                         if (uploader.queue.length>0){
+                            for (var i=0; i<uploader.queue.length; i++){
+                                imagesArr.push(path+uploader.queue[i]._file.name);
+                            }
+                            $scope.item.images = imagesArr;
                             $scope.isLoadImages = true;
                             uploader.uploadAll();
                         } else {
                             sendData();
                         }
                     };
+
                     var sendData = function(){
                         bus.request(topics.SHOP.ADD_ITEM, $scope.item).then((res)=>{
                             bus.publish(events.SHOP.ITEM_CREATED, res);
