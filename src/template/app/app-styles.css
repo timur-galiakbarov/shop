@@ -33,12 +33,14 @@
 }
 .shop-tovar-item .itemCost{
     width: 100%;
-    text-align: center;
     font-size: 16px;
     font-weight: bold;
-    margin-top:15px;
 }
-/*------------------*/
+.shop-tovar-item .leftBlock, .shop-tovar-item .rightBlock{
+    margin-top:-15px;
+    float:left;
+}
+    /*------------------*/
 .catalogModal h3{
     font-size:18px;
     float:left;

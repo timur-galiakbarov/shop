@@ -5,6 +5,9 @@ import modules from './ui/module.js';
 
 import dashboardController from './ui/dashboard/controllers/dashboardController.js';
 
+/*UI------------------------------------------------------------------------------------------------------------------*/
+import radAmountFilter from './ui/base/radAmountFilter.js';
+
 /*shopController------------------------------------------------------------------------------------------------------*/
 import shopController from './ui/shop/controllers/shopController.js';
 /*shopDirectives*/
