@@ -19,18 +19,55 @@
     max-height: 300px;
 }
 .shop-tovar-item .itemImages{
-    height: 40px;
+    height: 48px;
     overflow: hidden;
     width: 100%;
 }
 .shop-tovar-item .smallImage{
     text-align: center;
     width: 100%;
+    float:left;
+    margin-top:5px;
+    margin-bottom:5px;
+    border:1px solid #eee;
+    overflow: hidden;
 }
+.shop-tovar-item .smallImage:hover{
+    border:1px solid #7761a7;
+    outline:1px solid #7761a7;
+    cursor: pointer;
+}
+
 .shop-tovar-item .smallImage img{
-    max-width:130%;
-    min-width: 100%;
+    height: 40px;
 }
+
+.shop-tovar-item .description{
+    padding-left:15px;
+    padding-right:15px;
+    float:left;
+}
+
+.shop-tovar-item .description .descText{
+    overflow: hidden;
+    max-height: 84px;
+    float:left;
+}
+
+.shop-tovar-item .description .showAll{
+    overflow: auto !important;
+    max-height: none !important;
+}
+
+.shop-tovar-item .description .showDesc{
+    margin-top:10px;
+    margin-left:0px;
+}
+
+.shop-tovar-item .description .showDesc:hover{
+    color: #7761a7;
+}
+
 .shop-tovar-item .itemCost{
     width: 100%;
     font-size: 16px;
@@ -39,6 +76,7 @@
 .shop-tovar-item .leftBlock, .shop-tovar-item .rightBlock{
     margin-top:-15px;
     float:left;
+    padding-bottom: 10px;
 }
     /*------------------*/
 .catalogModal h3{

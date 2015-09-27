@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12" ng-repeat="item in shop.items">
+    <div class="col-lg-12 col-md-12 col-xs-12" ng-repeat="(key, item) in shop.items">
         <div class="block-flat shop-tovar-item">
             <div class="header">
                 <div class="actions">
@@ -15,6 +15,9 @@
                     <div class="itemImage" ng-if="item.images&&item.images.length>0">
                         <img src="{{item.images[0]}}">
                     </div>
+                </div>
+                <div class="rightBlock col-sm-6">
+                    <p class="itemCost">{{item.cost | radAmountFilter}} ₽</p>
                     <div class="itemImages row">
                         <div ng-repeat="imageUrl in item.images">
                             <div class="col-xs-6 col-sm-4">
@@ -25,10 +28,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="rightBlock col-sm-6">
-                    <p class="itemCost">{{item.cost | radAmountFilter}} ₽</p>
-
-                    <p ng-bind-html="item.description"></p>
+                <div class="description">
+                    <div ng-bind-html="item.description" class="descText" id="desc{{key}}"></div>
+                    <button ng-click="toggleItem(key)" type="button" id="showDesc{{key}}" class="btn btn-xs showDesc">
+                        <i class="fa fa-sort-amount-asc"></i> <span>Раскрыть</span>
+                    </button>
                 </div>
             </div>
             <div class="clearfix"></div>
