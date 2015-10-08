@@ -3,6 +3,10 @@ import shopLogic from './bl/shop/shopLogic.js';
 
 import modules from './ui/module.js';
 
+import radForm from './ui/base/radForm.js';
+import radValidate from './ui/base/radValidate.js';
+import radValidationMessage from './ui/base/radValidationMessage.js';
+
 import dashboardController from './ui/dashboard/controllers/dashboardController.js';
 
 /*UI------------------------------------------------------------------------------------------------------------------*/

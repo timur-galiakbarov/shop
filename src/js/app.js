@@ -11,7 +11,7 @@ var app = angular.module('app', [
     'rad.dashboard',
     'rad.orders',
     'rad.settings',
-    'ui.bootstrap',
+    'ui.bootstrap'
 ]);
 
 angular.module('app').run(['$rootScope', 'bus',

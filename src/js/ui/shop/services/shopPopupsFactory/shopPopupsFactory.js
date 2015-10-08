@@ -11,7 +11,7 @@ import appState from './../../../../bl/account/appState.js';
     function shopPopupsFactory($modal, bus) {
 
         var openAddItemPopup = function () {
-            //console.log($modal);
+
             $modal.open({
                 animation: true,
                 templateUrl: './templates/js/ui/shop/services/shopPopupsFactory/views/addItemPopup.html',
@@ -81,6 +81,9 @@ import appState from './../../../../bl/account/appState.js';
                     $scope.isLoadImages = false;
 
                     $scope.add = function(){
+                        if (!$scope.api.form.validate()) {
+                            return;
+                        }
                         if (uploader.queue.length>0){
                             for (var i=0; i<uploader.queue.length; i++){
                                 imagesArr.push(path+uploader.queue[i]._file.name);
