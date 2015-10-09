@@ -27,7 +27,7 @@ function radCatalogItems() {
 
                         $timeout(function(){
                             $scope.isLoading = false;
-                        },1500);
+                        },8500);
                     });
                 }
             });
