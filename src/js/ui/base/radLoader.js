@@ -37,6 +37,7 @@
                     scope.$watch(attr.radLoader, function (loading) {
                         element.toggleClass(className, !!loading);
                         if (loading){
+                            element.append('<div class="loader_block"></div>');
                             spinner = new Spinner(opts).spin();
                             element.append(spinner.el);
                         } else {
