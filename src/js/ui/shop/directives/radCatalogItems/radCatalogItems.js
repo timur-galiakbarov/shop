@@ -13,15 +13,21 @@ function radCatalogItems() {
     return {
         restrict: 'EA',
         templateUrl: './templates/js/ui/shop/directives/radCatalogItems/radCatalogItems.html',
-        controller: ['$scope', '$state', 'bus', 'shopPopupsFactory', function ($scope, $state, bus, shopPopupsFactory) {
+        controller: ['$scope', '$state', 'bus', 'shopPopupsFactory', '$timeout', function ($scope, $state, bus, shopPopupsFactory, $timeout) {
             $scope.shop = {
                 items: []
             };
+            $scope.isLoading = true;
+
             bus.request(topics.SHOP.GET_ITEMS, {}).then((res)=> {
                 if (res && res.data) {
                     $scope.$apply(function () {
                         //console.log(res.data);
                         $scope.shop.items = res.data;
+
+                        $timeout(function(){
+                            $scope.isLoading = false;
+                        },1500);
                     });
                 }
             });

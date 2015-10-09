@@ -127,3 +127,9 @@
     border-top: 1px solid #eee;
     border-left: 1px solid #eee;
 }
+
+/*loader*/
+.loader {
+    position: relative;
+    background-color: rgba(0, 120, 201, 0.7);
+}
