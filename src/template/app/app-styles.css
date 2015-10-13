@@ -20,7 +20,6 @@
 }
 .shop-tovar-item .itemImages{
     height: 48px;
-    overflow: hidden;
     width: 100%;
 }
 .shop-tovar-item .smallImage{
@@ -32,9 +31,13 @@
     border:1px solid #eee;
     overflow: hidden;
 }
-.shop-tovar-item .smallImage:hover{
+.shop-tovar-item .smallImage:hover, .shop-tovar-item .active:hover{
     border:1px solid #7761a7;
     outline:1px solid #7761a7;
+    cursor: pointer;
+}
+.shop-tovar-item .active{
+    border:1px solid #7761a7;
     cursor: pointer;
 }
 
@@ -98,6 +101,10 @@
     position: relative;
     text-align: center;
     line-height: 80px;
+    padding: 15px;
+}
+.catalogModal .itemImage img{
+    max-height: 100px;
 }
 .catalogModal .imageRemove{
     position: absolute;
@@ -135,5 +142,5 @@
 .loader_block {
     position: absolute;
     left: 0; right: 0; top: 0; bottom: 0;
-    background-color: rgba(255, 0, 0, 0.8);
+    background-color: rgba(240, 240, 240, 0.5);
 }

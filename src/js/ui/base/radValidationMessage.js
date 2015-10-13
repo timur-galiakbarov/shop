@@ -1,8 +1,3 @@
-/**
- * Created by Azat Khalilov on 11.03.2015.
- */
-
-
 /*
  Формат использования.
  <div radValidationTooltip for="name поля для которого выводится сообщение" invalid-css="class"  >

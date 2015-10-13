@@ -41,6 +41,7 @@
                             spinner = new Spinner(opts).spin();
                             element.append(spinner.el);
                         } else {
+                            element.children('.loader_block').remove();
                             spinner.stop();
                         }
                     });

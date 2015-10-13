@@ -109,6 +109,12 @@ import appState from './../../../../bl/account/appState.js';
             });
         };
 
+        var openEditItemPopup = function(id){
+            bus.request(topics.SHOP.GET_ITEM, {id: id}).then((res)=>{
+                console.log(res);
+            });
+        };
+
         var openRemoveItemPopup = function (options) {
             $modal.open({
                 animation: true,
@@ -141,7 +147,8 @@ import appState from './../../../../bl/account/appState.js';
 
         return {
             openAddItemPopup: openAddItemPopup,
-            openRemoveItemPopup: openRemoveItemPopup
+            openRemoveItemPopup: openRemoveItemPopup,
+            openEditItemPopup: openEditItemPopup
         }
 
     }

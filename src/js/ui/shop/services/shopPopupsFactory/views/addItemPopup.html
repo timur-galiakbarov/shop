@@ -43,12 +43,12 @@
                                                    rad-validate required>
 
                     <div rad-validation-tooltip for="itemName" placement="top">
-                        <div
+                        <!--<div
                                 rad-validation-message="Ошибулина 1."
-                                condition="api.form.name.isShowHint()"></div>
+                                condition="api.form.itemName.isShowHint()"></div>-->
                         <div
-                                rad-validation-message="Ошибулина 2"
-                                condition="api.form.name.isShowError() && api.form.name.$error.required"></div>
+                                rad-validation-message="Пожалуйста, введите название товара или услуги"
+                                condition="api.form.itemName.isShowError() && api.form.itemName.$error.required"></div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -62,7 +62,11 @@
                 </div>
                 <div class="form-group" uploader="uploader">
                     <label>Изображения</label>
-                    <input type="file" nv-file-select="" class="uploadImageBtn" ng-model="item.images"
+                    <br />
+                    <div class="uploadImage btn btn-default" onclick="$('.uploadImageBtn').click()">
+                        Добавить изображения
+                    </div>
+                    <input type="file" nv-file-select="" class="uploadImageBtn hidden" ng-model="item.images"
                            uploader="uploader"
                            multiple/><br/>
 

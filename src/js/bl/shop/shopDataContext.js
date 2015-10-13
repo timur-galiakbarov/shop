@@ -24,7 +24,7 @@ export default {
         //console.log(options);
         return serverApi.request({
             url: '/controllers/shop/getItem.php',
-            type: 'POST',
+            type: 'GET',
             data: options
         }).then((res)=> {
             return res;

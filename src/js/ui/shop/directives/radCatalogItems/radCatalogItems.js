@@ -24,10 +24,8 @@ function radCatalogItems() {
                     $scope.$apply(function () {
                         //console.log(res.data);
                         $scope.shop.items = res.data;
+                        $scope.isLoading = false;
 
-                        $timeout(function(){
-                            $scope.isLoading = false;
-                        },8500);
                     });
                 }
             });
@@ -65,7 +63,23 @@ function radCatalogItems() {
                     return val.id == id
                 });
                 shopPopupsFactory.openRemoveItemPopup(item[0]);
-            }
+            };
+
+            $scope.editItem = function (id) {
+                var item = $scope.shop.items.filter((val)=> {
+                    return val.id == id
+                });
+                shopPopupsFactory.openEditItemPopup(item[0]);
+            };
+
+            $scope.showPicture = function (url, key, imageKey) {
+                angular.element('img.itemPicture'+key).attr('src', url);
+                angular.element('#smallPictures'+key+' .smallImage').each(function(){
+                    $(this).removeClass('active');
+                });
+                angular.element('#smallPictures'+key+' .smallImageItem'+imageKey).addClass('active');
+
+            };
         }],
         link: link
     };
