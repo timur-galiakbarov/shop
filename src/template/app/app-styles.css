@@ -13,31 +13,39 @@
 }
 .shop-tovar-item .itemImage{
     text-align: center;
+    height:180px;
 }
 .shop-tovar-item .itemImage img{
-    max-width: 100%;
-    max-height: 300px;
+    max-width: 90%;
+    max-height: 180px;
 }
 .shop-tovar-item .itemImages{
     height: 48px;
     width: 100%;
 }
+
+.shop-tovar-item .itemImages .item{
+    float:left;
+    width:90%;
+    margin-left:5%;
+}
+
 .shop-tovar-item .smallImage{
     text-align: center;
     width: 100%;
     float:left;
     margin-top:5px;
     margin-bottom:5px;
-    border:1px solid #eee;
     overflow: hidden;
+    padding-top:5px;
+    padding-bottom:5px;
 }
 .shop-tovar-item .smallImage:hover, .shop-tovar-item .active:hover{
-    border:1px solid #7761a7;
     outline:1px solid #7761a7;
     cursor: pointer;
 }
 .shop-tovar-item .active{
-    border:1px solid #7761a7;
+    outline:1px solid #7761a7;
     cursor: pointer;
 }
 
@@ -48,6 +56,7 @@
 .shop-tovar-item .description{
     padding-left:15px;
     padding-right:15px;
+    padding-top:5px;
     float:left;
 }
 
@@ -75,10 +84,13 @@
     width: 100%;
     font-size: 16px;
     font-weight: bold;
+    text-align: center;
 }
 .shop-tovar-item .leftBlock, .shop-tovar-item .rightBlock{
-    margin-top:-15px;
     padding-bottom: 10px;
+}
+.shop-tovar-item .rightBlock{
+    margin-top:10px;
 }
     /*------------------*/
 .catalogModal h3{

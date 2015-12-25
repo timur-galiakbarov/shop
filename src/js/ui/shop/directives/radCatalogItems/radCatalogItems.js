@@ -48,8 +48,8 @@ function radCatalogItems() {
                 });
             });
 
-            $scope.toggleItem = function(key){
-                if (angular.element('#desc'+key).hasClass('showAll')) {
+            $scope.toggleItem = function (key) {
+                if (angular.element('#desc' + key).hasClass('showAll')) {
                     angular.element('#desc' + key).removeClass('showAll');
                     angular.element('#showDesc' + key + ' span').html('Раскрыть');
                 } else {
@@ -73,13 +73,29 @@ function radCatalogItems() {
             };
 
             $scope.showPicture = function (url, key, imageKey) {
-                angular.element('img.itemPicture'+key).attr('src', url);
-                angular.element('#smallPictures'+key+' .smallImage').each(function(){
+                angular.element('img.itemPicture' + key).attr('src', url);
+                angular.element('#smallPictures' + key + ' .smallImage').each(function () {
                     $(this).removeClass('active');
                 });
-                angular.element('#smallPictures'+key+' .smallImageItem'+imageKey).addClass('active');
-
+                angular.element('#smallPictures' + key + ' .smallImageItem' + imageKey).addClass('active');
             };
+
+            $scope.$on('onFinishRenderImages', function (event, data) {
+                $(document).ready(function(){
+                    var owl = $("#carousel" + data);
+                    owl.owlCarousel({
+                        autoPlay: false,
+
+                        items : 3,
+                        itemsDesktop : [1199,3],
+                        itemsDesktopSmall : [979,3],
+                        itemsTablet: [768, 3],
+                        itemsMobile: [479, 2],
+                        pagination: false,
+                        navigation: false
+                    });
+                });
+            });
         }],
         link: link
     };

@@ -24,7 +24,9 @@ var path = {
         js: 'src/js/main.js',//В стилях и скриптах нам понадобятся только main файлы
         fonts: 'src/fonts/**/*.*',
         bower: 'bower_components/**/*.*',
-        tpljs: 'src/js/template/**/*.*'
+        tpljs: 'src/js/template/**/*.*',
+        libcss: 'src/lib/**/*.css',
+        libjs: 'src/lib/**/*.js'
     },
     watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
         html: 'src/**/*.html',

@@ -24,6 +24,7 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider',
                 url: 'shop/',
                 views: {
                     'content': {
+                        url: 'shop/',
                         templateUrl: './templates/js/ui/shop/controllers/shopController.html',
                         controller: 'shopController'
                     }
@@ -51,7 +52,7 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider',
                     }
                 },
                 parent: 'index'
-            })
+            });
 
         //$locationProvider.html5Mode(true);
     }]);

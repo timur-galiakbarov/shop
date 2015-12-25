@@ -7,6 +7,7 @@ import radForm from './ui/base/radForm.js';
 import radValidate from './ui/base/radValidate.js';
 import radValidationMessage from './ui/base/radValidationMessage.js';
 import radLoader from './ui/base/radLoader.js';
+import radOnFinishRenderNgRepeat from './ui/base/radOnFinishRenderNgRepeat.js';
 
 import dashboardController from './ui/dashboard/controllers/dashboardController.js';
 

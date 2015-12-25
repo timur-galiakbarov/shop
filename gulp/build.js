@@ -29,6 +29,13 @@ gulp.task('css:build', function () {
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
 
+gulp.task('libcss:build', function () {
+    return gulp.src(path.src.libcss) //Выберем файлы по нужному пути
+        .pipe(concat('libStyles.css'))
+        .pipe(gulp.dest(path.build.css)) //Выплюнем их в папку build
+        .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+});
+
 gulp.task('js:build', function () {
     return browserify({entries: path.src.js, debug: true})
         .transform(babelify)
@@ -36,6 +43,12 @@ gulp.task('js:build', function () {
         .pipe(source('bundle.js'))
         //.pipe(uglify()) //Сожмем наш js
         .pipe(gulp.dest(path.build.js)); //Выплюнем готовый файл в build
+});
+
+gulp.task('libjs:build', function () {
+    return gulp.src(path.src.libjs) //Выберем файлы по нужному пути
+        .pipe(concat('libScripts.js'))
+        .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('js:tplbuild', function () {
@@ -53,7 +66,9 @@ gulp.task('build', ['bower_components'], function (done) {
     runSequence(
         'indexHtml:build',
         'html:build',
+        'libcss:build',
         'css:build',
+        'libjs:build',
         'js:tplbuild',
         'js:build',
         'fonts:build',done);

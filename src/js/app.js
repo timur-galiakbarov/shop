@@ -26,7 +26,8 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
                 $rootScope.isAuth = true;
             });
             //Открываем раздел по умолчанию
-            $state.go('index.dashboard');
+            if ($state.current.name == 'index')
+                $state.go('index.dashboard');
         });
         bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=> {
             if (res.success) {
