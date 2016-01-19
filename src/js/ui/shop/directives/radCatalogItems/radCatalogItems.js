@@ -26,6 +26,7 @@ function radCatalogItems() {
                         $scope.shop.items = res.data;
                         $scope.isLoading = false;
 
+
                     });
                 }
             });
