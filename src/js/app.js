@@ -56,6 +56,11 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
             ul.slideToggle(300, 'swing', function () {
             });
             e.preventDefault();
-        }
+        };
+
+        /*$('.nano').nanoScroller({
+            preventPageScrolling: true,
+            alwaysVisible: true
+        });*/
 
     }]);
