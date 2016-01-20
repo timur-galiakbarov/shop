@@ -26,6 +26,7 @@ import shopPopupsFactory from './ui/shop/services/shopPopupsFactory/shopPopupsFa
 import ordersController from './ui/orders/controllers/ordersController.js';
 
 import settingsController from './ui/settings/controllers/settingsController.js';
+import radVkAuth from './ui/settings/directives/radVkAuth/radVkAuth.js';
 
 import radMenu from './ui/menu/module.js';
 
