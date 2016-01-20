@@ -4,4 +4,6 @@ angular
         function($rootScope, $scope, $state) {
 
             $rootScope.page.sectionTitle = 'Главная';
+
+            $(".nano").nanoScroller();
         }]);

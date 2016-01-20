@@ -25,8 +25,6 @@ function radCatalogItems() {
                         //console.log(res.data);
                         $scope.shop.items = res.data;
                         $scope.isLoading = false;
-
-
                     });
                 }
             });
@@ -95,6 +93,8 @@ function radCatalogItems() {
                         pagination: false,
                         navigation: false
                     });
+
+                    $(".nano").nanoScroller();
                 });
             });
         }],
