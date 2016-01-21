@@ -27,6 +27,7 @@ import ordersController from './ui/orders/controllers/ordersController.js';
 
 import settingsController from './ui/settings/controllers/settingsController.js';
 import radVkAuth from './ui/settings/directives/radVkAuth/radVkAuth.js';
+import radUserSettings from './ui/settings/directives/radUserSettings/radUserSettings.js';
 
 import radMenu from './ui/menu/module.js';
 

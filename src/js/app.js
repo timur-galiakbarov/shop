@@ -21,7 +21,7 @@ angular.module('app').run(['$rootScope', 'bus',
 
 app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
     function ($rootScope, $scope, $state, bus) {
-        bus.subscribe(events.ACCOUNT.STATED, function () {
+        bus.subscribe(events.APP.READY, function () {
             $rootScope.$apply(function () {
                 $rootScope.isAuth = true;
             });
@@ -31,9 +31,18 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
         });
         bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=> {
             if (res.success) {
-                bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=> {
-                    bus.publish(events.ACCOUNT.STATED, res);
-                });
+                $.when(
+                    bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=> {
+                        bus.publish(events.ACCOUNT.STATED, res);
+                    })
+                ).then(function(res){
+                        bus.publish(events.APP.READY);
+                    }
+                );
+
+                bus.request(topics.ACCOUNT.GET_VK_INFO).then((res)=> {
+                    bus.publish(events.ACCOUNT.VK.AUTH, res);
+                })
             } else {
                 $scope.isAuth = false;
                 location.href = '/login/';
