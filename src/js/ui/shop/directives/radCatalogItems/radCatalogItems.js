@@ -47,14 +47,8 @@ function radCatalogItems() {
                 });
             });
 
-            $scope.toggleItem = function (key) {
-                if (angular.element('#desc' + key).hasClass('showAll')) {
-                    angular.element('#desc' + key).removeClass('showAll');
-                    angular.element('#showDesc' + key + ' span').html('Раскрыть');
-                } else {
-                    angular.element('#desc' + key).addClass('showAll');
-                    angular.element('#showDesc' + key + ' span').html('Cкрыть');
-                }
+            $scope.openItem = function(id){
+                shopPopupsFactory.openItemPopup(id);
             };
 
             $scope.removeItem = function (id) {

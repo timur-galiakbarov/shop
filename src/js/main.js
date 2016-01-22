@@ -35,3 +35,4 @@ import app from './app.js';
 
 import route from './route.js';
 import bus from './bl/core/bus.js';
+import appState from './bl/account/appState.js';

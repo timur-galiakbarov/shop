@@ -1,9 +1,10 @@
 /**
- * РЎРµСЂРІРёСЃ С…СЂР°РЅРµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * Сервис хранения состояния пользователя
  */
+
 import {bus} from 'core';
 import events from '../events.js';
-import topics from '../events.js';
+import topics from '../topics.js';
 
 var userInfo = null;
 var currentShop = null;
@@ -14,10 +15,13 @@ bus.subscribe(events.ACCOUNT.VK.AUTH, saveVkAuthInfo);
 function saveUserProfile(user) {
     userInfo = user.user ? user.user : null;
     currentShop = user.shopIds ? user.shopIds[0] : null;
+
+    bus.publish(events.APP.READY);
 }
 
 function saveVkAuthInfo(vkInfo) {
     userInfo.vkInfo =  vkInfo || {};
+
     bus.publish(events.ACCOUNT.VK.INFO_READY);
 }
 
@@ -50,9 +54,16 @@ var appState = {
         getVk: function(){
             return userInfo.vkInfo || {};
         }
+    },
+    user() {
+        return userInfo
     }
 };
 
-export default appState;
-
-
+(function (module) {
+    module.factory('appState', [
+        function () {
+            return appState;
+        }
+    ])
+})(angular.module('app'));

@@ -31,14 +31,10 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
         });
         bus.request(topics.ACCOUNT.IS_AUTH, {notLogError: true}).then((res)=> {
             if (res.success) {
-                $.when(
-                    bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=> {
-                        bus.publish(events.ACCOUNT.STATED, res);
-                    })
-                ).then(function(res){
-                        bus.publish(events.APP.READY);
-                    }
-                );
+
+                bus.request(topics.ACCOUNT.GET_USER_INFO).then((res)=> {
+                    bus.publish(events.ACCOUNT.STATED, res);
+                });
 
                 bus.request(topics.ACCOUNT.GET_VK_INFO).then((res)=> {
                     bus.publish(events.ACCOUNT.VK.AUTH, res);
@@ -66,10 +62,5 @@ app.controller('appController', ['$rootScope', '$scope', '$state', 'bus',
             });
             e.preventDefault();
         };
-
-        /*$('.nano').nanoScroller({
-            preventPageScrolling: true,
-            alwaysVisible: true
-        });*/
 
     }]);

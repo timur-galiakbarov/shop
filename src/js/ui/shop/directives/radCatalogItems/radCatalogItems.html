@@ -12,8 +12,8 @@
             </div>
             <div class="content row">
                 <div class="leftBlock col-xs-12">
-                    <div class="itemImage" ng-if="item.images&&item.images.length>0">
-                        <img class="itemPicture{{key}}" src="{{item.images[0]}}">
+                    <div class="itemImage">
+                        <img class="itemPicture{{key}}" src="{{item.images[0]}}" ng-if="item.images&&item.images.length>0">
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -34,8 +34,8 @@
                 </div>
                 <div class="description">
                     <div ng-bind-html="item.description" class="descText" id="desc{{key}}"></div>
-                    <button ng-click="toggleItem(key)" type="button" id="showDesc{{key}}" class="btn btn-xs showDesc">
-                        <i class="fa fa-sort-amount-asc"></i> <span>Раскрыть</span>
+                    <button ng-click="openItem(item.id)" type="button" id="showDesc{{key}}" class="btn btn-xs showDesc">
+                        <i class="fa fa-sort-amount-asc"></i> <span>Подробно</span>
                     </button>
                 </div>
             </div>

@@ -1,10 +1,9 @@
 import {enums} from './../../../bl/module.js';
-import appState from './../../../bl/account/appState.js';
 
 angular
     .module('rad.shop')
-    .controller('shopController', ['$rootScope', '$scope', '$state', 'bus', 'shopPopupsFactory',
-    function($rootScope, $scope, $state, bus, shopPopupsFactory) {
+    .controller('shopController', ['$rootScope', '$scope', '$state', 'bus', 'shopPopupsFactory', 'appState',
+    function($rootScope, $scope, $state, bus, shopPopupsFactory, appState) {
         $scope.currentTab = 'catalog';
         $rootScope.page.sectionTitle = 'Магазин';
         $scope.catalogPages = {
